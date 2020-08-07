@@ -36,16 +36,16 @@ config.build = {
     dest: 'dist/assets/libraries'
   },
   scripts: {
+    src: [
+      'src/scripts/entry/**/*.js',
+      '!src/scripts/entry/**/*.mod.js'
+    ],
     esModules: {
       entry: 'src/scripts/entry/**/*.mod.js',
       output: {
         filename: 'es-modules-bundle.js'
       }
     },
-    src: [
-      'src/scripts/entry/**/*.js',
-      '!src/scripts/entry/**/*.mod.js'
-    ],
     dest: 'dist/assets/scripts'
   },
   styles: {
@@ -82,7 +82,17 @@ config.watch = {
   fonts: 'src/fonts/**/*.*',
   images: 'src/images/**/*.*',
   libraries: 'src/libraries/**/*.*',
-  scripts: 'src/scripts/**/*.js',
+  scripts: {
+    src: [
+      'src/scripts/**/*.js',
+      '!src/scripts/entry/**/*.mod.js',
+      '!src/scripts/modules/**/*.js'
+    ],
+    esModules: [
+      'src/scripts/entry/**/*.mod.js',
+      'src/scripts/modules/**/*.js'
+    ],
+  },
   styles: 'src/styles/**/*.scss',
   views: 'src/views/**/*.html'
 };

@@ -132,7 +132,8 @@ function watchFiles() {
     gulp.watch(config.watch.fonts, buildFonts);
     gulp.watch(config.watch.images, buildImages);
     gulp.watch(config.watch.libraries, buildLibraries);
-    gulp.watch(config.watch.scripts, gulp.parallel(buildScripts, buildEsModules));
+    gulp.watch(config.watch.scripts.src, buildScripts);
+    gulp.watch(config.watch.scripts.esModules, buildEsModules);
     gulp.watch(config.watch.styles, buildStyles);
     gulp.watch(config.watch.views, buildViews);
 }
