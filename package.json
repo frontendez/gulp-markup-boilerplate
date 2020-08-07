@@ -1,0 +1,21 @@
+{
+  "name": "@frontendez/gulp-markup-boilerplate",
+  "version": "1.0.0",
+  "description": "Gulp boilerplate for markup (HTML, CSS, JS)",
+  "author": "Sergei S. <frontendez@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/frontendez/gulp-markup-boilerplate#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frontendez/gulp-markup-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/frontendez/gulp-markup-boilerplate/issues"
+  },
+  "bin": {
+    "gulp-markup-boilerplate": "cli.js"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1"
+  }
+}
