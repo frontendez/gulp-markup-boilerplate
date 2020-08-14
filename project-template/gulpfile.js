@@ -71,7 +71,7 @@ function buildScriptsBundle() {
     return gulp.src(config.bundle.scripts.src.concat('null'), { allowEmpty: true })
         .pipe(concat(config.bundle.scripts.file))
         .pipe(beautify())
-        .pipe(gulp.dest(config.bundle.scripts.dest))
+        .pipe(gulp.dest(config.bundle.scripts.dest));
 }
 
 function buildStyles() {
@@ -86,7 +86,7 @@ function buildStylesBundle() {
     return gulp.src(config.bundle.styles.src.concat('null'), { allowEmpty: true })
         .pipe(concatCss(config.bundle.styles.file, { commonBase: config.bundle.styles.dest }))
         .pipe(beautify())
-        .pipe(gulp.dest(config.bundle.styles.dest))
+        .pipe(gulp.dest(config.bundle.styles.dest));
 }
 
 function buildViews() {
@@ -102,7 +102,8 @@ function cleanDist() {
 
 function copyFiles() {
     return gulp.src(config.build.files.src)
-        .pipe(gulp.dest(config.build.files.dest))
+        .pipe(newer(config.build.files.dest))
+        .pipe(gulp.dest(config.build.files.dest));
 }
 
 function minifyScripts() {
@@ -111,7 +112,7 @@ function minifyScripts() {
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write(''))
-        .pipe(gulp.dest(config.minify.scripts.dest))
+        .pipe(gulp.dest(config.minify.scripts.dest));
 }
 
 function minifyStyles() {
@@ -120,7 +121,7 @@ function minifyStyles() {
         .pipe(cleanCss())
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write(''))
-        .pipe(gulp.dest(config.minify.styles.dest))
+        .pipe(gulp.dest(config.minify.styles.dest));
 }
 
 function startServer() {
