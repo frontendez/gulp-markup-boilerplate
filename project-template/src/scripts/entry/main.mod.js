@@ -1,3 +1,3 @@
-import {myModuleFunction} from '../modules/my-module.js';
+import {moduleFunction} from '../modules/module.js';
 
-myModuleFunction();
+moduleFunction();

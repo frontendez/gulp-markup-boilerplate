@@ -43,6 +43,7 @@ my-project                         #Project directory
     |-- index.html                 #Index page
 |-- node_modules                   #Node modules
 |-- src                            #Source directory
+        |-- files                  #Static files for copying (favicon.ico, robots.txt...)
         |-- fonts                  #Fonts
         |-- images                 #Images
         |-- libraries              #Libraries (JQuery, Bootstrap and so on...)

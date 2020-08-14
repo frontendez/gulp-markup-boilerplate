@@ -1,28 +1,33 @@
 let config = {};
 
 config.bundle = {
-  scripts: {
-    src: [
-      'dist/assets/libraries/jquery-3.5.1/jquery-3.5.1.js',
-      'dist/assets/libraries/bootstrap-4.5.1/bootstrap.bundle.js',
-      'dist/assets/scripts/main.js',
-      'dist/assets/scripts/es-modules-bundle.js'
-    ],
-    dest: 'dist/assets/scripts',
-    file: 'bundle.js'
-  },
   styles: {
     src: [
-      'dist/assets/libraries/bootstrap-4.5.1/bootstrap.css',
+      'dist/assets/fonts/roboto/roboto.css',
+      'dist/assets/libraries/bootstrap-4.5.2/bootstrap.css',
       'dist/assets/libraries/fontawesome-free-5.14.0-web/css/all.css',
       'dist/assets/styles/main.css'
     ],
     dest: 'dist/assets/styles',
     file: 'bundle.css'
+  },
+  scripts: {
+    src: [
+      'dist/assets/libraries/jquery-3.5.1/jquery-3.5.1.js',
+      'dist/assets/libraries/bootstrap-4.5.2/bootstrap.bundle.js',
+      'dist/assets/scripts/main.js',
+      'dist/assets/scripts/es-modules-bundle.js'
+    ],
+    dest: 'dist/assets/scripts',
+    file: 'bundle.js'
   }
 }
 
 config.build = {
+  files: {
+    src: 'src/files/**/*.*',
+    dest: 'dist'
+  },
   fonts: {
     src: 'src/fonts/**/*.*',
     dest: 'dist/assets/fonts'
@@ -79,6 +84,7 @@ config.minify = {
 };
 
 config.watch = {
+  files: 'src/files/**/*.*',
   fonts: 'src/fonts/**/*.*',
   images: 'src/images/**/*.*',
   libraries: 'src/libraries/**/*.*',

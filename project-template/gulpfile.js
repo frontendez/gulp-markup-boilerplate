@@ -100,6 +100,11 @@ function cleanDist() {
     return del(['dist/**']);
 }
 
+function copyFiles() {
+    return gulp.src(config.build.files.src)
+        .pipe(gulp.dest(config.build.files.dest))
+}
+
 function minifyScripts() {
     return gulp.src(config.minify.scripts.src)
         .pipe(sourcemaps.init())
@@ -129,6 +134,7 @@ function startServer() {
 }
 
 function watchFiles() {
+    gulp.watch(config.watch.files, copyFiles);
     gulp.watch(config.watch.fonts, buildFonts);
     gulp.watch(config.watch.images, buildImages);
     gulp.watch(config.watch.libraries, buildLibraries);
@@ -141,6 +147,7 @@ function watchFiles() {
 exports.build = gulp.series(
     cleanDist,
     gulp.parallel(
+        copyFiles,
         buildFonts,
         buildImages,
         gulp.series(

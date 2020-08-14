@@ -1,1 +1,1 @@
-//=require ../partials/handlers.js
+//=require ../partials/partial.js
