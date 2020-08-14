@@ -94,10 +94,10 @@ config.watch = {
       '!src/scripts/entry/**/*.mod.js',
       '!src/scripts/modules/**/*.js'
     ],
-    esModules: [
+    modules: [
       'src/scripts/entry/**/*.mod.js',
       'src/scripts/modules/**/*.js'
-    ],
+    ]
   },
   styles: 'src/styles/**/*.scss',
   views: 'src/views/**/*.html'

@@ -1,6 +1,6 @@
 {
   "name": "@frontendez/gulp-markup-boilerplate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Gulp boilerplate for markup (HTML, CSS, JS)",
   "author": "Sergei S. <frontendez@gmail.com>",
   "license": "MIT",

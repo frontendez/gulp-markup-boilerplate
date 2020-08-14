@@ -140,7 +140,7 @@ function watchFiles() {
     gulp.watch(config.watch.images, buildImages);
     gulp.watch(config.watch.libraries, buildLibraries);
     gulp.watch(config.watch.scripts.src, buildScripts);
-    gulp.watch(config.watch.scripts.esModules, buildEsModules);
+    gulp.watch(config.watch.scripts.modules, buildEsModules);
     gulp.watch(config.watch.styles, buildStyles);
     gulp.watch(config.watch.views, buildViews);
 }
@@ -166,11 +166,11 @@ exports.build = gulp.series(
                     ),
                     buildScriptsBundle,
                     minifyScripts
-                ),
-            ),
+                )
+            )
         ),
         buildViews
-    ),
+    )
 );
 exports.clean = cleanDist;
 exports.dev = gulp.parallel(watchFiles, startServer);
