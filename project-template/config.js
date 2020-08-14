@@ -16,7 +16,7 @@ config.bundle = {
       'dist/assets/libraries/jquery-3.5.1/jquery-3.5.1.js',
       'dist/assets/libraries/bootstrap-4.5.2/bootstrap.bundle.js',
       'dist/assets/scripts/main.js',
-      'dist/assets/scripts/es-modules-bundle.js'
+      'dist/assets/scripts/modules-bundle.js'
     ],
     dest: 'dist/assets/scripts',
     file: 'bundle.js'
@@ -45,13 +45,13 @@ config.build = {
       'src/scripts/entry/**/*.js',
       '!src/scripts/entry/**/*.mod.js'
     ],
-    esModules: {
+    dest: 'dist/assets/scripts',
+    modules: {
       entry: 'src/scripts/entry/**/*.mod.js',
       output: {
-        filename: 'es-modules-bundle.js'
+        filename: 'modules-bundle.js'
       }
-    },
-    dest: 'dist/assets/scripts'
+    }
   },
   styles: {
     src: 'src/styles/entry/**/*.scss',

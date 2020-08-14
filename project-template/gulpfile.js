@@ -56,12 +56,12 @@ function buildScripts() {
 }
 
 function buildEsModules() {
-    return gulp.src(config.build.scripts.esModules.entry)
+    return gulp.src(config.build.scripts.modules.entry)
         //.pipe(named())
         .pipe(webpack({
             mode: 'production',
             devtool: 'none',
-            output: config.build.scripts.esModules.output
+            output: config.build.scripts.modules.output
         }))
         .pipe(beautify())
         .pipe(gulp.dest(config.build.scripts.dest));
