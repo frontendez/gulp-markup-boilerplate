@@ -37,7 +37,7 @@ my-project                         #Project directory
     |-- assets                     #Assets
         |-- fonts                  #Fonts
         |-- images                 #Images
-        |-- libraries              #Libraries (JQuery, Bootstrap and so on...)
+        |-- libraries              #Libraries (JQuery, Bootstrap...)
         |-- scripts                #Scripts (JavaScript)
         |-- styles                 #Styles (CSS)
     |-- index.html                 #Index page
@@ -46,7 +46,7 @@ my-project                         #Project directory
         |-- files                  #Static files for copying (favicon.ico, robots.txt...)
         |-- fonts                  #Fonts
         |-- images                 #Images
-        |-- libraries              #Libraries (JQuery, Bootstrap and so on...)
+        |-- libraries              #Libraries (JQuery, Bootstrap...)
         |-- scripts                #Scripts (JavaScript)
             |-- entry              #Entry points of scripts
                 |-- main.js        #JavaScript main file
