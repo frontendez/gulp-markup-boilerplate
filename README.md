@@ -8,6 +8,7 @@ Gulp boilerplate for markup (HTML, CSS, JS).
 - Sass, autoprefixer, minify css, bundle css
 - ES6 modules support, minify js, bundle js
 - Optimize images
+- Web server
 - Browser live reloads after changes
 
 ## Create a new project
@@ -25,7 +26,9 @@ It will create a project directory inside the current folder, generate the initi
 
 * `npm run build` - build project from source
 
-* `npm run dev` - start server and reload automatically after changes
+* `npm run dev` - start web server, watch and build changes, reload browser automatically
+
+* `npm run watch` - watch and build changes without web server starting
 
 * `npm run clean` - clean output directory 'dist'
 
