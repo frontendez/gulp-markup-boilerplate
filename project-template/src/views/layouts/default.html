@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{%- extends 'layouts/base.html' -%}
 
 {%- block layout -%}
 <!doctype html>
@@ -7,15 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ title }}</title>
-    {%- if keywords %}
-    <meta name="keywords" content="{{ keywords }}">
-    {%- endif %}
-    {%- if description %}
-    <meta name="description" content="{{ description }}">
-    {%- endif %}
-    {%- if robots %}
-    <meta name="robots" content="{{ robots }}">
-    {%- endif %}
+    {%- if keywords -%}<meta name="keywords" content="{{ keywords }}">{%- endif -%}
+    {%- if description -%}<meta name="description" content="{{ description }}">{%- endif -%}
+    {%- if robots -%}<meta name="robots" content="{{ robots }}">{%- endif -%}
     <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
     <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.2/bootstrap.css">
     <link rel="stylesheet" href="assets/libraries/fontawesome-free-5.14.0-web/css/all.css">
@@ -48,16 +42,14 @@
 
     <link rel="stylesheet" href="assets/styles/bundle.min.css">
     <script src="assets/scripts/bundle.min.js"></script>
-    #}
+    -#}
 </head>
 <body>
 <div class="container">
-    {% include 'partials/partial.html' %}
-    {%- if h1 %}
-    <h1>{{ h1 }}</h1>
-    {%- endif %}
-    {%- block page %}{% endblock -%}
+    {%- include 'partials/partial.html' -%}
+    {%- if h1 -%}<h1>{{ h1 }}</h1>{%- endif -%}
+    {%- block page %}{%- endblock -%}
 </div>
 </body>
 </html>
-{% endblock %}
+{%- endblock -%}
