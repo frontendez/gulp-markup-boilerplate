@@ -149,10 +149,12 @@ exports.build = gulp.series(
     cleanDist,
     gulp.parallel(
         copyFiles,
-        buildFonts,
         buildImages,
         gulp.series(
-            buildLibraries,
+            gulp.parallel(
+                buildFonts,
+                buildLibraries,
+            ),
             gulp.parallel(
                 gulp.series(
                     buildStyles,
