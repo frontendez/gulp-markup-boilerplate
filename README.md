@@ -69,3 +69,10 @@ my-project                         #Project directory
 |-- gulpfile.js                    #Gulp config
 |-- package.json
 |-- package-lock.json
+```
+
+## Configuration files
+
+* config.js - configuring paths and bundle files
+
+* gulpfile.js - gulp tasks file
