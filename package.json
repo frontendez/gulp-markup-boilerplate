@@ -1,6 +1,6 @@
 {
   "name": "@frontendez/gulp-markup-boilerplate",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Gulp boilerplate for markup (HTML, CSS, JS)",
   "author": "Sergei S. <frontendez@gmail.com>",
   "license": "MIT",
@@ -16,6 +16,6 @@
     "gulp-markup-boilerplate": "cli.js"
   },
   "dependencies": {
-    "fs-extra": "^9.0.1"
+    "fs-extra": "*"
   }
 }
