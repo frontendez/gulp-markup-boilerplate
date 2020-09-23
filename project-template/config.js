@@ -25,7 +25,7 @@ config.bundle = {
 
 config.build = {
   files: {
-    src: 'src/files/**/*.*',
+    src: 'src/static/**/*.*',
     dest: 'dist'
   },
   fonts: {
@@ -59,7 +59,7 @@ config.build = {
   },
   views: {
     folder: 'src/views',
-    src: 'src/views/entry/**/*.html',
+    src: 'src/views/entry/**/*.njk',
     dest: 'dist'
   }
 };
@@ -84,7 +84,7 @@ config.minify = {
 };
 
 config.watch = {
-  files: 'src/files/**/*.*',
+  files: 'src/static/**/*.*',
   fonts: 'src/fonts/**/*.*',
   images: 'src/images/**/*.*',
   libraries: 'src/libraries/**/*.*',
@@ -100,7 +100,7 @@ config.watch = {
     ]
   },
   styles: 'src/styles/**/*.scss',
-  views: 'src/views/**/*.html'
+  views: 'src/views/**/*.njk'
 };
 
 module.exports = config;

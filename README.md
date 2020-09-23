@@ -46,7 +46,6 @@ my-project                         #Project directory
     |-- index.html                 #Index page
 |-- node_modules                   #Node modules
 |-- src                            #Source directory
-        |-- files                  #Static files for copying (favicon.ico, robots.txt...)
         |-- fonts                  #Fonts
         |-- images                 #Images
         |-- libraries              #Libraries (JQuery, Bootstrap...)
@@ -56,14 +55,14 @@ my-project                         #Project directory
                 |-- main.mod.js    #ES main module (.mod.js will be transpiled by Babel)
             |-- modules            #ES modules for import
             |-- partials           #Partials of scripts
+        |-- static                 #Static files for copying (favicon.ico, robots.txt...)
         |-- styles                 #Styles (SCSS)
             |-- entry              #Entry points of styles
                 |-- main.scss      #JavaScript main file
             |-- partials           #Partials of styles
         |-- views                  #Views (html)
             |-- entry              #Entry points of Views (will be processed by Nunjucks)
-                |-- index.html     #Index page
-            |-- layouts            #Layouts of pages
+                |-- index.njk      #Index page
             |-- partials           #Partials of views
 |-- config.js                      #Project config
 |-- gulpfile.js                    #Gulp config

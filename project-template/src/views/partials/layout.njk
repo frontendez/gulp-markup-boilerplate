@@ -1,55 +1,65 @@
-{%- extends 'layouts/base.html' -%}
-
-{%- block layout -%}
 <!doctype html>
-<html lang="en">
+<html lang="{{ lang | default('en') }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>{{ title }}</title>
-    {%- if keywords -%}<meta name="keywords" content="{{ keywords }}">{%- endif -%}
-    {%- if description -%}<meta name="description" content="{{ description }}">{%- endif -%}
-    {%- if robots -%}<meta name="robots" content="{{ robots }}">{%- endif -%}
+
+    {% if keywords %}<meta name="keywords" content="{{ keywords }}">{% endif %}
+    {% if description %}<meta name="description" content="{{ description }}">{% endif %}
+    {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+
     <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
     <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.2/bootstrap.css">
     <link rel="stylesheet" href="assets/libraries/fontawesome-free-5.14.0-web/css/all.css">
     <link rel="stylesheet" href="assets/styles/main.css">
-    <script src="assets/libraries/jquery-3.5.1/jquery-3.5.1.js"></script>
-    <script src="assets/libraries/bootstrap-4.5.2/bootstrap.bundle.js"></script>
-    <script src="assets/scripts/modules-bundle.js"></script>
-    <script src="assets/scripts/main.js"></script>
-    {#- Examples for copy and paste
-    <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
-    <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.2/bootstrap.css">
-    <link rel="stylesheet" href="assets/libraries/fontawesome-free-5.14.0-web/css/all.css">
-    <link rel="stylesheet" href="assets/styles/main.css">
+
     <script src="assets/libraries/jquery-3.5.1/jquery-3.5.1.js"></script>
     <script src="assets/libraries/bootstrap-4.5.2/bootstrap.bundle.js"></script>
     <script src="assets/scripts/modules-bundle.js"></script>
     <script src="assets/scripts/main.js"></script>
 
+    {#- Examples for copy and paste
+    ----------------------------------------------------------------------------------------------------
+    <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
+    <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.2/bootstrap.css">
+    <link rel="stylesheet" href="assets/libraries/fontawesome-free-5.14.0-web/css/all.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+
+    <script src="assets/libraries/jquery-3.5.1/jquery-3.5.1.js"></script>
+    <script src="assets/libraries/bootstrap-4.5.2/bootstrap.bundle.js"></script>
+    <script src="assets/scripts/modules-bundle.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    ----------------------------------------------------------------------------------------------------
     <link rel="stylesheet" href="assets/fonts/roboto/roboto.min.css">
     <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.2/bootstrap.min.css">
     <link rel="stylesheet" href="assets/libraries/fontawesome-free-5.14.0-web/css/all.min.css">
     <link rel="stylesheet" href="assets/styles/main.min.css">
+
     <script src="assets/libraries/jquery-3.5.1/jquery-3.5.1.min.js"></script>
     <script src="assets/libraries/bootstrap-4.5.2/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/modules-bundle.min.js"></script>
     <script src="assets/scripts/main.min.js"></script>
-
+    ----------------------------------------------------------------------------------------------------
     <link rel="stylesheet" href="assets/styles/bundle.css">
-    <script src="assets/scripts/bundle.js"></script>
 
+    <script src="assets/scripts/bundle.js"></script>
+    ----------------------------------------------------------------------------------------------------
     <link rel="stylesheet" href="assets/styles/bundle.min.css">
+
     <script src="assets/scripts/bundle.min.js"></script>
+    ----------------------------------------------------------------------------------------------------
     -#}
 </head>
+
 <body>
 <div class="container">
-    {%- include 'partials/partial.html' -%}
-    {%- if h1 -%}<h1>{{ h1 }}</h1>{%- endif -%}
-    {%- block page %}{%- endblock -%}
+    {% include './menu.njk' %}
+    {% if h1 %}<h1>{{ h1 }}</h1>{% endif %}
+    {% block page %}{% endblock %}
 </div>
 </body>
+
 </html>
-{%- endblock -%}
