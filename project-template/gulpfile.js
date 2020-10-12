@@ -14,7 +14,7 @@ const nunjucksRender = require('gulp-nunjucks-render');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify-es').default;
 const webpack = require('webpack-stream');
 
 const config = require('./config.js');
