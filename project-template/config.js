@@ -4,8 +4,7 @@ config.bundle = {
   styles: {
     src: [
       'dist/assets/fonts/roboto/roboto.css',
-      'dist/assets/libraries/bootstrap-4.5.2/bootstrap.css',
-      'dist/assets/libraries/fontawesome-free-5.14.0-web/css/all.css',
+      'dist/assets/libraries/bootstrap-4.5.3/bootstrap.css',
       'dist/assets/styles/main.css'
     ],
     dest: 'dist/assets/styles',
@@ -14,9 +13,9 @@ config.bundle = {
   scripts: {
     src: [
       'dist/assets/libraries/jquery-3.5.1/jquery-3.5.1.js',
-      'dist/assets/libraries/bootstrap-4.5.2/bootstrap.bundle.js',
-      'dist/assets/scripts/main.js',
-      'dist/assets/scripts/modules-bundle.js'
+      'dist/assets/libraries/bootstrap-4.5.3/bootstrap.bundle.js',
+      'dist/assets/scripts/modules-bundle.js',
+      'dist/assets/scripts/main.js'
     ],
     dest: 'dist/assets/scripts',
     file: 'bundle.js'
@@ -58,7 +57,7 @@ config.build = {
     dest: 'dist/assets/styles'
   },
   views: {
-    folder: 'src/views',
+    folder: 'src',
     src: 'src/views/entry/**/*.njk',
     dest: 'dist'
   }
@@ -90,17 +89,24 @@ config.watch = {
   libraries: 'src/libraries/**/*.*',
   scripts: {
     src: [
+      'src/components/**/*.js',
       'src/scripts/**/*.js',
-      '!src/scripts/entry/**/*.mod.js',
-      '!src/scripts/modules/**/*.js'
+      '!src/components/**/*.mod.js',
+      '!src/scripts/**/*.mod.js'
     ],
     modules: [
-      'src/scripts/entry/**/*.mod.js',
-      'src/scripts/modules/**/*.js'
+      'src/components/**/*.mod.js',
+      'src/scripts/**/*.mod.js'
     ]
   },
-  styles: 'src/styles/**/*.scss',
-  views: 'src/views/**/*.njk'
+  styles: [
+    'src/components/**/*.scss',
+    'src/styles/**/*.scss'
+  ],
+  views: [
+    'src/components/**/*.njk',
+    'src/views/**/*.njk'
+  ]
 };
 
 module.exports = config;

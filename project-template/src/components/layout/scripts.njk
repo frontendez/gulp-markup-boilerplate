@@ -1,0 +1,17 @@
+{% set switch = 1 -%}
+
+{% if switch == 1 -%}
+    <script src="assets/libraries/jquery-3.5.1/jquery-3.5.1.js"></script>
+    <script src="assets/libraries/bootstrap-4.5.3/bootstrap.bundle.js"></script>
+    <script src="assets/scripts/modules-bundle.js"></script>
+    <script src="assets/scripts/main.js"></script>
+{%- elseif switch == 2 -%}
+    <script src="assets/libraries/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="assets/libraries/bootstrap-4.5.3/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/modules-bundle.min.js"></script>
+    <script src="assets/scripts/main.min.js"></script>
+{%- elseif switch == 3 -%}
+    <script src="assets/scripts/bundle.js"></script>
+{%- elseif switch == 4 -%}
+    <script src="assets/scripts/bundle.min.js"></script>
+{%- endif %}

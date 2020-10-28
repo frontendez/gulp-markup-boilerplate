@@ -1,3 +1,5 @@
-$(document).ready(function(){
+/* partial.js */
 
+$(function() {
+    //console.log('partial.js');
 });

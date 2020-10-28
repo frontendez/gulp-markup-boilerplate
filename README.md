@@ -46,6 +46,7 @@ my-project                         #Project directory
     |-- index.html                 #Index page
 |-- node_modules                   #Node modules
 |-- src                            #Source directory
+        |-- components             #Components
         |-- fonts                  #Fonts
         |-- images                 #Images
         |-- libraries              #Libraries (JQuery, Bootstrap...)

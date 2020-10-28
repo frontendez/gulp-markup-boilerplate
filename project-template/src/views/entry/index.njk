@@ -1,68 +1,7 @@
-<!doctype html>
-<html lang="en">
+{% extends 'components/layout/layout.njk' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pages</title>
-    <style>
-        body {
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.5;
-            font-style: normal;
-            font-variant: normal;
-            color: #212529;
-        }
-        h1 {
-            margin: 0 0 5px 0;
-            padding: 0;
-            font-size: 32px;
-            font-weight: 500;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-        }
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: disc;
-        }
+{% set title = 'Main' %}
 
-        ul ul {
-            margin-left: 40px;
-        }
-
-        ul li {
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-    </style>
-</head>
-
-<body>
-<div>
-    <h1>Pages</h1>
-    <nav>
-        <ul>
-            <li><a target="_blank" href="main.html">Main</a></li>
-            <li><a target="_blank" href="404.html">404</a></li>
-        </ul>
-    </nav>
-</div>
-</body>
-
-</html>
+{% block page -%}
+<h1>Main</h1>
+{%- endblock %}

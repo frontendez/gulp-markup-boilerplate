@@ -61,7 +61,21 @@ function buildEsModules() {
         .pipe(webpack({
             mode: 'production',
             devtool: 'none',
-            output: config.build.scripts.modules.output
+            output: config.build.scripts.modules.output,
+            module: {
+                rules: [
+                    {
+                        test: /\.m?js$/,
+                        exclude: /(node_modules|bower_components)/,
+                        use: {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env']
+                            }
+                        }
+                    }
+                ]
+            }
         }))
         .pipe(beautify())
         .pipe(gulp.dest(config.build.scripts.dest));

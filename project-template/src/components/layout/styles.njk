@@ -1,0 +1,15 @@
+{% set switch = 1 -%}
+
+{% if switch == 1 -%}
+    <link rel="stylesheet" href="assets/fonts/roboto/roboto.css">
+    <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.3/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+{%- elseif switch == 2 -%}
+    <link rel="stylesheet" href="assets/fonts/roboto/roboto.min.css">
+    <link rel="stylesheet" href="assets/libraries/bootstrap-4.5.3/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/styles/main.min.css">
+{%- elseif switch == 3 -%}
+    <link rel="stylesheet" href="assets/styles/bundle.css">
+{%- elseif switch == 4 -%}
+    <link rel="stylesheet" href="assets/styles/bundle.min.css">
+{%- endif %}
