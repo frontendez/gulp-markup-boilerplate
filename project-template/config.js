@@ -68,6 +68,7 @@ config.minify = {
     src: [
       'dist/assets/**/*.js',
       '!dist/assets/**/*.min.js',
+      '!dist/assets/fonts/**/*.js',
       '!dist/assets/libraries/**/*.js'
     ],
     dest: 'dist/assets'
@@ -76,6 +77,7 @@ config.minify = {
     src: [
       'dist/assets/**/*.css',
       '!dist/assets/**/*.min.css',
+      '!dist/assets/fonts/**/*.css',
       '!dist/assets/libraries/**/*.css'
     ],
     dest: 'dist/assets'
