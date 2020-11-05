@@ -1,11 +1,12 @@
-let config = {};
+const config = {};
 
 config.bundle = {
   styles: {
     src: [
       'dist/assets/fonts/roboto/roboto.css',
       'dist/assets/libraries/bootstrap-4.5.3/bootstrap.css',
-      'dist/assets/styles/main.css'
+      'dist/assets/styles/main.css',
+      'dist/assets/styles/components.css'
     ],
     dest: 'dist/assets/styles',
     file: 'bundle.css'
@@ -14,8 +15,10 @@ config.bundle = {
     src: [
       'dist/assets/libraries/jquery-3.5.1/jquery-3.5.1.js',
       'dist/assets/libraries/bootstrap-4.5.3/bootstrap.bundle.js',
-      'dist/assets/scripts/modules-bundle.js',
-      'dist/assets/scripts/main.js'
+      'dist/assets/scripts/main.esm.js',
+      'dist/assets/scripts/main.js',
+      'dist/assets/scripts/components.esm.js',
+      'dist/assets/scripts/components.js'
     ],
     dest: 'dist/assets/scripts',
     file: 'bundle.js'
@@ -23,6 +26,25 @@ config.bundle = {
 }
 
 config.build = {
+  components: {
+    scripts: {
+      src: [
+        'src/components/**/[^_]*.js',
+        '!src/components/**/*.esm.js'
+      ],
+      dest: 'dist/assets/scripts',
+      file: 'components.js',
+      modules: {
+        src: 'src/components/**/[^_]*.esm.js',
+        file: 'components.esm.js',
+      }
+    },
+    styles: {
+      src: 'src/components/**/[^_]*.scss',
+      dest: 'dist/assets/styles',
+      file: 'components.css'
+    },
+  },
   files: {
     src: 'src/static/**/*.*',
     dest: 'dist'
@@ -41,24 +63,21 @@ config.build = {
   },
   scripts: {
     src: [
-      'src/scripts/entry/**/*.js',
-      '!src/scripts/entry/**/*.mod.js'
+      'src/scripts/**/[^_]*.js',
+      '!src/scripts/**/*.esm.js'
     ],
     dest: 'dist/assets/scripts',
     modules: {
-      entry: 'src/scripts/entry/**/*.mod.js',
-      output: {
-        filename: 'modules-bundle.js'
-      }
+      src: 'src/scripts/**/[^_]*.esm.js',
     }
   },
   styles: {
-    src: 'src/styles/entry/**/*.scss',
+    src: 'src/styles/**/[^_]*.scss',
     dest: 'dist/assets/styles'
   },
   views: {
     folder: 'src',
-    src: 'src/views/entry/**/*.njk',
+    src: 'src/views/**/[^_]*.njk',
     dest: 'dist'
   }
 };
@@ -85,26 +104,28 @@ config.minify = {
 };
 
 config.watch = {
+  components: {
+    scripts: {
+      src: [
+        'src/components/**/*.js',
+        '!src/components/**/*.esm.js',
+      ],
+      modules: 'src/components/**/*.esm.js'
+    },
+    styles: 'src/components/**/*.scss'
+  },
   files: 'src/static/**/*.*',
   fonts: 'src/fonts/**/*.*',
   images: 'src/images/**/*.*',
   libraries: 'src/libraries/**/*.*',
   scripts: {
     src: [
-      'src/components/**/*.js',
       'src/scripts/**/*.js',
-      '!src/components/**/*.mod.js',
-      '!src/scripts/**/*.mod.js'
+      '!src/scripts/**/*.esm.js'
     ],
-    modules: [
-      'src/components/**/*.mod.js',
-      'src/scripts/**/*.mod.js'
-    ]
+    modules: 'src/scripts/**/*.esm.js'
   },
-  styles: [
-    'src/components/**/*.scss',
-    'src/styles/**/*.scss'
-  ],
+  styles: 'src/styles/**/*.scss',
   views: [
     'src/components/**/*.njk',
     'src/views/**/*.njk'

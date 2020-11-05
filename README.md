@@ -6,7 +6,7 @@ Gulp boilerplate for markup (HTML, CSS, JS).
 - Easy project creation
 - Full featured templating with Nunjucks
 - Sass, autoprefixer, minify css, bundle css
-- ES6 modules support, minify js, bundle js
+- ES modules support, minify js, bundle js
 - Optimize images
 - Web server
 - Browser live reloads after changes
@@ -40,31 +40,20 @@ my-project                         #Project directory
     |-- assets                     #Assets
         |-- fonts                  #Fonts
         |-- images                 #Images
-        |-- libraries              #Libraries (JQuery, Bootstrap...)
-        |-- scripts                #Scripts (JavaScript)
-        |-- styles                 #Styles (CSS)
+        |-- libraries              #Libraries
+        |-- scripts                #Scripts
+        |-- styles                 #Styles
     |-- index.html                 #Index page
 |-- node_modules                   #Node modules
 |-- src                            #Source directory
         |-- components             #Components
         |-- fonts                  #Fonts
         |-- images                 #Images
-        |-- libraries              #Libraries (JQuery, Bootstrap...)
-        |-- scripts                #Scripts (JavaScript)
-            |-- entry              #Entry points of scripts
-                |-- main.js        #JavaScript main file
-                |-- main.mod.js    #ES main module (.mod.js will be transpiled by Babel)
-            |-- modules            #ES modules for import
-            |-- partials           #Partials of scripts
-        |-- static                 #Static files for copying (favicon.ico, robots.txt...)
-        |-- styles                 #Styles (SCSS)
-            |-- entry              #Entry points of styles
-                |-- main.scss      #JavaScript main file
-            |-- partials           #Partials of styles
-        |-- views                  #Views (html)
-            |-- entry              #Entry points of Views (will be processed by Nunjucks)
-                |-- index.njk      #Index page
-            |-- partials           #Partials of views
+        |-- libraries              #Libraries
+        |-- scripts                #Scripts
+        |-- static                 #Static files
+        |-- styles                 #Styles
+        |-- views                  #Views
 |-- config.js                      #Project config
 |-- gulpfile.js                    #Gulp config
 |-- package.json

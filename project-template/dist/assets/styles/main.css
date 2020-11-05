@@ -1,22 +1,3 @@
-/* partial.scss */
 body {
     font-family: Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
-
-/* layout */
-.layout {
-    margin: 0;
-    padding: 0;
-}
-
-/* header */
-.header {
-    margin: 0;
-    padding: 0;
-}
-
-/* footer */
-.footer {
-    margin: 0;
-    padding: 0;
 }

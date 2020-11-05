@@ -19,6 +19,49 @@ const webpack = require('webpack-stream');
 
 const config = require('./config.js');
 
+function buildComponentEsModules() {
+    return gulp.src(config.build.components.scripts.modules.src)
+        .pipe(named())
+        .pipe(webpack({
+            mode: 'production',
+            devtool: 'none',
+            module: {
+                rules: [
+                    {
+                        test: /\.m?js$/,
+                        exclude: /(node_modules|bower_components)/,
+                        use: {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env']
+                            }
+                        }
+                    }
+                ]
+            }
+        }))
+        .pipe(concat(config.build.components.scripts.modules.file))
+        .pipe(beautify())
+        .pipe(gulp.dest(config.build.components.scripts.dest));
+}
+
+function buildComponentScripts() {
+    return gulp.src(config.build.components.scripts.src)
+        .pipe(include())
+        .pipe(concat(config.build.components.scripts.file))
+        .pipe(beautify())
+        .pipe(gulp.dest(config.build.components.scripts.dest));
+}
+
+function buildComponentStyles() {
+    return gulp.src(config.build.components.styles.src)
+        .pipe(sass({ outputStyle: 'expanded' }))
+        .pipe(autoprefixer({ overrideBrowserslist: '>0%'}))
+        .pipe(concat(config.build.components.styles.file))
+        .pipe(beautify())
+        .pipe(gulp.dest(config.build.components.styles.dest));
+}
+
 function buildFonts() {
     return gulp.src(config.build.fonts.src)
         .pipe(newer(config.build.fonts.dest))
@@ -56,12 +99,11 @@ function buildScripts() {
 }
 
 function buildEsModules() {
-    return gulp.src(config.build.scripts.modules.entry)
-        //.pipe(named())
+    return gulp.src(config.build.scripts.modules.src)
+        .pipe(named())
         .pipe(webpack({
             mode: 'production',
             devtool: 'none',
-            output: config.build.scripts.modules.output,
             module: {
                 rules: [
                     {
@@ -149,6 +191,9 @@ function startServer() {
 }
 
 function watchFiles() {
+    gulp.watch(config.watch.components.styles, buildComponentStyles);
+    gulp.watch(config.watch.components.scripts.src, buildComponentScripts);
+    gulp.watch(config.watch.components.scripts.modules, buildComponentEsModules);
     gulp.watch(config.watch.files, copyFiles);
     gulp.watch(config.watch.fonts, buildFonts);
     gulp.watch(config.watch.images, buildImages);
@@ -171,7 +216,10 @@ exports.build = gulp.series(
             ),
             gulp.parallel(
                 gulp.series(
-                    buildStyles,
+                    gulp.parallel(
+                        buildStyles,
+                        buildComponentStyles,
+                    ),
                     buildStylesBundle,
                     minifyStyles
                 ),
@@ -179,6 +227,8 @@ exports.build = gulp.series(
                     gulp.parallel(
                         buildScripts,
                         buildEsModules,
+                        buildComponentScripts,
+                        buildComponentEsModules
                     ),
                     buildScriptsBundle,
                     minifyScripts
