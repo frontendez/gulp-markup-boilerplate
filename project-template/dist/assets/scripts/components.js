@@ -1,13 +1,13 @@
+/* footer */
+$(function() {
+    //console.log('footer');
+});
+
 /* header */
 $(function() {
     //console.log('header');
 });
 
-
-/* footer */
-$(function() {
-    //console.log('footer');
-});
 
 /* layout */
 $(function() {

@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const beautify = require('gulp-jsbeautifier');
 const browserSync = require('browser-sync').create();
+const changed = require('gulp-changed');
 const cleanCss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const concatCss = require('gulp-concat-css');
@@ -20,7 +21,7 @@ const webpack = require('webpack-stream');
 const config = require('./config.js');
 
 function buildComponentEsModules() {
-    return gulp.src(config.build.components.scripts.modules.src)
+    return gulp.src(config.build.components.esModules.src)
         .pipe(named())
         .pipe(webpack({
             mode: 'production',
@@ -40,15 +41,15 @@ function buildComponentEsModules() {
                 ]
             }
         }))
-        .pipe(concat(config.build.components.scripts.modules.file))
+        .pipe(concat(config.build.components.esModules.filename))
         .pipe(beautify())
-        .pipe(gulp.dest(config.build.components.scripts.dest));
+        .pipe(gulp.dest(config.build.components.esModules.dest));
 }
 
 function buildComponentScripts() {
     return gulp.src(config.build.components.scripts.src)
         .pipe(include())
-        .pipe(concat(config.build.components.scripts.file))
+        .pipe(concat(config.build.components.scripts.filename))
         .pipe(beautify())
         .pipe(gulp.dest(config.build.components.scripts.dest));
 }
@@ -57,7 +58,7 @@ function buildComponentStyles() {
     return gulp.src(config.build.components.styles.src)
         .pipe(sass({ outputStyle: 'expanded' }))
         .pipe(autoprefixer({ overrideBrowserslist: '>0%'}))
-        .pipe(concat(config.build.components.styles.file))
+        .pipe(concat(config.build.components.styles.filename))
         .pipe(beautify())
         .pipe(gulp.dest(config.build.components.styles.dest));
 }
@@ -95,11 +96,12 @@ function buildScripts() {
     return gulp.src(config.build.scripts.src)
         .pipe(include())
         .pipe(beautify())
+        .pipe(changed(config.build.scripts.dest, { hasChanged: changed.compareContents }))
         .pipe(gulp.dest(config.build.scripts.dest));
 }
 
 function buildEsModules() {
-    return gulp.src(config.build.scripts.modules.src)
+    return gulp.src(config.build.esModules.src)
         .pipe(named())
         .pipe(webpack({
             mode: 'production',
@@ -120,14 +122,15 @@ function buildEsModules() {
             }
         }))
         .pipe(beautify())
-        .pipe(gulp.dest(config.build.scripts.dest));
+        .pipe(changed(config.build.esModules.dest, { hasChanged: changed.compareContents }))
+        .pipe(gulp.dest(config.build.esModules.dest));
 }
 
 function buildScriptsBundle() {
-    return gulp.src(config.bundle.scripts.src.concat('null'), { allowEmpty: true })
-        .pipe(concat(config.bundle.scripts.file))
+    return gulp.src(config.bundles.scripts.src.concat('null'), { allowEmpty: true })
+        .pipe(concat(config.bundles.scripts.filename))
         .pipe(beautify())
-        .pipe(gulp.dest(config.bundle.scripts.dest));
+        .pipe(gulp.dest(config.bundles.scripts.dest));
 }
 
 function buildStyles() {
@@ -135,31 +138,33 @@ function buildStyles() {
         .pipe(sass({ outputStyle: 'expanded' }))
         .pipe(autoprefixer({ overrideBrowserslist: '>0%'}))
         .pipe(beautify())
+        .pipe(changed(config.build.styles.dest, { hasChanged: changed.compareContents }))
         .pipe(gulp.dest(config.build.styles.dest));
 }
 
 function buildStylesBundle() {
-    return gulp.src(config.bundle.styles.src.concat('null'), { allowEmpty: true })
-        .pipe(concatCss(config.bundle.styles.file, { commonBase: config.bundle.styles.dest }))
+    return gulp.src(config.bundles.styles.src.concat('null'), { allowEmpty: true })
+        .pipe(concatCss(config.bundles.styles.filename, { commonBase: config.bundles.styles.dest }))
         .pipe(beautify())
-        .pipe(gulp.dest(config.bundle.styles.dest));
+        .pipe(gulp.dest(config.bundles.styles.dest));
 }
 
 function buildViews() {
     return gulp.src(config.build.views.src)
         .pipe(nunjucksRender({ path: [config.build.views.folder] }))
         .pipe(beautify())
+        .pipe(changed(config.build.views.dest, { hasChanged: changed.compareContents }))
         .pipe(gulp.dest(config.build.views.dest));
 }
 
 function cleanDist() {
-    return del(['dist/**']);
+    return del([config.paths.dist + '/**']);
 }
 
-function copyFiles() {
-    return gulp.src(config.build.files.src)
-        .pipe(newer(config.build.files.dest))
-        .pipe(gulp.dest(config.build.files.dest));
+function copyStatic() {
+    return gulp.src(config.build.static.src)
+        .pipe(newer(config.build.static.dest))
+        .pipe(gulp.dest(config.build.static.dest));
 }
 
 function minifyScripts() {
@@ -182,24 +187,24 @@ function minifyStyles() {
 
 function startServer() {
     browserSync.init({
+        notify: false,
         server: {
-            baseDir: 'dist'
+            baseDir: config.paths.dist
         },
-        watch: true,
-        notify: false
+        watch: true
     });
 }
 
 function watchFiles() {
+    gulp.watch(config.watch.esModules, buildEsModules);
+    gulp.watch(config.watch.components.esModules, buildComponentEsModules);
     gulp.watch(config.watch.components.styles, buildComponentStyles);
-    gulp.watch(config.watch.components.scripts.src, buildComponentScripts);
-    gulp.watch(config.watch.components.scripts.modules, buildComponentEsModules);
-    gulp.watch(config.watch.files, copyFiles);
+    gulp.watch(config.watch.components.scripts, buildComponentScripts);
+    gulp.watch(config.watch.files, copyStatic);
     gulp.watch(config.watch.fonts, buildFonts);
     gulp.watch(config.watch.images, buildImages);
     gulp.watch(config.watch.libraries, buildLibraries);
-    gulp.watch(config.watch.scripts.src, buildScripts);
-    gulp.watch(config.watch.scripts.modules, buildEsModules);
+    gulp.watch(config.watch.scripts, buildScripts);
     gulp.watch(config.watch.styles, buildStyles);
     gulp.watch(config.watch.views, buildViews);
 }
@@ -207,7 +212,7 @@ function watchFiles() {
 exports.build = gulp.series(
     cleanDist,
     gulp.parallel(
-        copyFiles,
+        copyStatic,
         buildImages,
         gulp.series(
             gulp.parallel(

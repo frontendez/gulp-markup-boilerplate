@@ -1,135 +1,128 @@
 const config = {};
 
-config.bundle = {
+const paths = {
+  dist: 'dist',
+  src: 'src'
+};
+
+const bundles = {
   styles: {
     src: [
-      'dist/assets/fonts/roboto/roboto.css',
-      'dist/assets/libraries/bootstrap-4.5.3/bootstrap.css',
-      'dist/assets/styles/main.css',
-      'dist/assets/styles/components.css'
+      `${paths.dist}/assets/fonts/roboto/roboto.css`,
+      `${paths.dist}/assets/libraries/bootstrap-4.5.3/bootstrap.css`,
+      `${paths.dist}/assets/styles/main.css`,
+      `${paths.dist}/assets/styles/components.css`
     ],
-    dest: 'dist/assets/styles',
-    file: 'bundle.css'
+    dest: `${paths.dist}/assets/styles`,
+    filename: 'bundle.css'
   },
   scripts: {
     src: [
-      'dist/assets/libraries/jquery-3.5.1/jquery-3.5.1.js',
-      'dist/assets/libraries/bootstrap-4.5.3/bootstrap.bundle.js',
-      'dist/assets/scripts/main.esm.js',
-      'dist/assets/scripts/main.js',
-      'dist/assets/scripts/components.esm.js',
-      'dist/assets/scripts/components.js'
+      `${paths.dist}/assets/libraries/jquery-3.5.1/jquery.js`,
+      `${paths.dist}/assets/libraries/bootstrap-4.5.3/bootstrap.js`,
+      `${paths.dist}/assets/scripts/main.esm.js`,
+      `${paths.dist}/assets/scripts/main.js`,
+      `${paths.dist}/assets/scripts/components.esm.js`,
+      `${paths.dist}/assets/scripts/components.js`
     ],
-    dest: 'dist/assets/scripts',
-    file: 'bundle.js'
+    dest: `${paths.dist}/assets/scripts`,
+    filename: 'bundle.js'
   }
-}
+};
 
-config.build = {
+const build = {
   components: {
+    esModules: {
+      src: `${paths.src}/components/**/[^_]*.esm.js`,
+      dest: `${paths.dist}/assets/scripts`,
+      filename: 'components.esm.js'
+    },
     scripts: {
-      src: [
-        'src/components/**/[^_]*.js',
-        '!src/components/**/*.esm.js'
-      ],
-      dest: 'dist/assets/scripts',
-      file: 'components.js',
-      modules: {
-        src: 'src/components/**/[^_]*.esm.js',
-        file: 'components.esm.js',
-      }
+      src: `${paths.src}/components/**/!(_*|*.esm).js`,
+      dest: `${paths.dist}/assets/scripts`,
+      filename: 'components.js'
     },
     styles: {
-      src: 'src/components/**/[^_]*.scss',
-      dest: 'dist/assets/styles',
-      file: 'components.css'
-    },
-  },
-  files: {
-    src: 'src/static/**/*.*',
-    dest: 'dist'
-  },
-  fonts: {
-    src: 'src/fonts/**/*.*',
-    dest: 'dist/assets/fonts'
-  },
-  images: {
-    src: 'src/images/**/*.*',
-    dest: 'dist/assets/images'
-  },
-  libraries: {
-    src: 'src/libraries/**/*.*',
-    dest: 'dist/assets/libraries'
-  },
-  scripts: {
-    src: [
-      'src/scripts/**/[^_]*.js',
-      '!src/scripts/**/*.esm.js'
-    ],
-    dest: 'dist/assets/scripts',
-    modules: {
-      src: 'src/scripts/**/[^_]*.esm.js',
+      src: `${paths.src}/components/**/[^_]*.scss`,
+      dest: `${paths.dist}/assets/styles`,
+      filename: 'components.css'
     }
   },
+  esModules: {
+    src: `${paths.src}/scripts/**/[^_]*.esm.js`,
+    dest: `${paths.dist}/assets/scripts`
+  },
+  fonts: {
+    src: `${paths.src}/fonts/**/*.*`,
+    dest: `${paths.dist}/assets/fonts`
+  },
+  images: {
+    src: `${paths.src}/images/**/*.*`,
+    dest: `${paths.dist}/assets/images`
+  },
+  libraries: {
+    src: `${paths.src}/libraries/**/*.*`,
+    dest: `${paths.dist}/assets/libraries`
+  },
+  scripts: {
+    src: `${paths.src}/scripts/**/!(_*|*.esm).js`,
+    dest: `${paths.dist}/assets/scripts`
+  },
+  static: {
+    src: `${paths.src}/static/**/*.*`,
+    dest: paths.dist
+  },
   styles: {
-    src: 'src/styles/**/[^_]*.scss',
-    dest: 'dist/assets/styles'
+    src: `${paths.src}/styles/**/[^_]*.scss`,
+    dest: `${paths.dist}/assets/styles`
   },
   views: {
-    folder: 'src',
-    src: 'src/views/**/[^_]*.njk',
-    dest: 'dist'
+    folder: paths.src,
+    src: `${paths.src}/views/**/[^_]*.njk`,
+    dest: paths.dist
   }
 };
 
-config.minify = {
+const minify = {
   scripts: {
     src: [
-      'dist/assets/**/*.js',
-      '!dist/assets/**/*.min.js',
-      '!dist/assets/fonts/**/*.js',
-      '!dist/assets/libraries/**/*.js'
+      `${paths.dist}/assets/**/!(*.min).js`,
+      `!${paths.dist}/assets/@(fonts|libraries)/**/*.js`
     ],
     dest: 'dist/assets'
   },
   styles: {
     src: [
-      'dist/assets/**/*.css',
-      '!dist/assets/**/*.min.css',
-      '!dist/assets/fonts/**/*.css',
-      '!dist/assets/libraries/**/*.css'
+      `${paths.dist}/assets/**/!(*.min).css`,
+      `!${paths.dist}/assets/@(fonts|libraries)/**/*.css`
     ],
-    dest: 'dist/assets'
+    dest: `${paths.dist}/assets`
   }
 };
 
-config.watch = {
+const watch = {
+  esModules: `${paths.src}/scripts/**/*.esm.js`,
   components: {
-    scripts: {
-      src: [
-        'src/components/**/*.js',
-        '!src/components/**/*.esm.js',
-      ],
-      modules: 'src/components/**/*.esm.js'
-    },
-    styles: 'src/components/**/*.scss'
+    esModules: `${paths.src}/components/**/*.esm.js`,
+    scripts: `${paths.src}/components/**/!(*.esm).js`,
+    styles: `${paths.src}/components/**/*.scss`
   },
-  files: 'src/static/**/*.*',
-  fonts: 'src/fonts/**/*.*',
-  images: 'src/images/**/*.*',
-  libraries: 'src/libraries/**/*.*',
-  scripts: {
-    src: [
-      'src/scripts/**/*.js',
-      '!src/scripts/**/*.esm.js'
-    ],
-    modules: 'src/scripts/**/*.esm.js'
-  },
-  styles: 'src/styles/**/*.scss',
+  files: `${paths.src}/static/**/*.*`,
+  fonts: `${paths.src}/fonts/**/*.*`,
+  images: `${paths.src}/images/**/*.*`,
+  libraries: `${paths.src}/libraries/**/*.*`,
+  scripts: `${paths.src}/scripts/**/!(*.esm).js`,
+  styles: `${paths.src}/styles/**/*.scss`,
   views: [
-    'src/components/**/*.njk',
-    'src/views/**/*.njk'
+    `${paths.src}/components/**/*.njk`,
+    `${paths.src}/views/**/*.njk`
   ]
 };
 
-module.exports = config;
+module.exports = {
+  paths: paths,
+  bundles: bundles,
+  build: build,
+  minify: minify,
+  watch: watch
+};
