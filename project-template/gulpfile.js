@@ -196,17 +196,17 @@ function startServer() {
 }
 
 function watchFiles() {
-    gulp.watch(config.watch.esModules, buildEsModules);
-    gulp.watch(config.watch.components.esModules, buildComponentEsModules);
-    gulp.watch(config.watch.components.styles, buildComponentStyles);
-    gulp.watch(config.watch.components.scripts, buildComponentScripts);
-    gulp.watch(config.watch.files, copyStatic);
-    gulp.watch(config.watch.fonts, buildFonts);
-    gulp.watch(config.watch.images, buildImages);
-    gulp.watch(config.watch.libraries, buildLibraries);
-    gulp.watch(config.watch.scripts, buildScripts);
-    gulp.watch(config.watch.styles, buildStyles);
-    gulp.watch(config.watch.views, buildViews);
+    gulp.watch(config.watch.esModules, { usePolling: true }, buildEsModules);
+    gulp.watch(config.watch.components.esModules, { usePolling: true }, buildComponentEsModules);
+    gulp.watch(config.watch.components.styles, { usePolling: true }, buildComponentStyles);
+    gulp.watch(config.watch.components.scripts, { usePolling: true }, buildComponentScripts);
+    gulp.watch(config.watch.files, { usePolling: true }, copyStatic);
+    gulp.watch(config.watch.fonts, { usePolling: true }, buildFonts);
+    gulp.watch(config.watch.images, { usePolling: true }, buildImages);
+    gulp.watch(config.watch.libraries, { usePolling: true }, buildLibraries);
+    gulp.watch(config.watch.scripts, { usePolling: true }, buildScripts);
+    gulp.watch(config.watch.styles, { usePolling: true }, buildStyles);
+    gulp.watch(config.watch.views, { usePolling: true }, buildViews);
 }
 
 exports.build = gulp.series(
