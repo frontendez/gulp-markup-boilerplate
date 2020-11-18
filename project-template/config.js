@@ -107,11 +107,11 @@ const watch = {
     scripts: `${paths.src}/components/**/!(*.esm).js`,
     styles: `${paths.src}/components/**/*.scss`
   },
-  files: `${paths.src}/static/**/*.*`,
   fonts: `${paths.src}/fonts/**/*.*`,
   images: `${paths.src}/images/**/*.*`,
   libraries: `${paths.src}/libraries/**/*.*`,
   scripts: `${paths.src}/scripts/**/!(*.esm).js`,
+  static: `${paths.src}/static/**/*.*`,
   styles: `${paths.src}/styles/**/*.scss`,
   views: [
     `${paths.src}/components/**/*.njk`,

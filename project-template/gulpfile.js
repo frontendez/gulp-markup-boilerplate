@@ -200,7 +200,7 @@ function watchFiles() {
     gulp.watch(config.watch.components.esModules, { usePolling: true }, buildComponentEsModules);
     gulp.watch(config.watch.components.styles, { usePolling: true }, buildComponentStyles);
     gulp.watch(config.watch.components.scripts, { usePolling: true }, buildComponentScripts);
-    gulp.watch(config.watch.files, { usePolling: true }, copyStatic);
+    gulp.watch(config.watch.static, { usePolling: true }, copyStatic);
     gulp.watch(config.watch.fonts, { usePolling: true }, buildFonts);
     gulp.watch(config.watch.images, { usePolling: true }, buildImages);
     gulp.watch(config.watch.libraries, { usePolling: true }, buildLibraries);
