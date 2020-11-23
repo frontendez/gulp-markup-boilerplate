@@ -22,7 +22,7 @@ const config = require('./config.js');
 
 function buildComponentEsModules() {
     return gulp.src(config.build.components.esModules.src)
-        .pipe(named())
+        //.pipe(named())
         .pipe(webpack({
             mode: 'production',
             devtool: 'none',
