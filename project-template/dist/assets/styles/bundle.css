@@ -11533,27 +11533,10 @@ a.text-dark:focus {
     }
 }
 
+/* base */
+
 body {
     font-family: Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-/* footer */
-
-.footer {
-    margin: 0;
-    padding: 0;
-}
-
-/* header */
-
-.header {
-    margin: 0;
-    padding: 0;
-}
-
-/* layout */
-
-.layout {
-    margin: 0;
-    padding: 0;
-}
+/*------------------------------------------------------------------------------------------------*/

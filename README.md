@@ -46,14 +46,16 @@ my-project                         #Project directory
     |-- index.html                 #Index page
 |-- node_modules                   #Node modules
 |-- src                            #Source directory
-        |-- components             #Components
         |-- fonts                  #Fonts
         |-- images                 #Images
         |-- libraries              #Libraries
         |-- scripts                #Scripts
+            |-- _chunks            #Chunks (partials)
         |-- static                 #Static files
         |-- styles                 #Styles
+            |-- _chunks            #Chunks (partials)
         |-- views                  #Views
+            |-- _chunks            #Chunks (partials)
 |-- config.js                      #Project config
 |-- gulpfile.js                    #Gulp config
 |-- package.json

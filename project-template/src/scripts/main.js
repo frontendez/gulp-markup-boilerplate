@@ -1,1 +1,1 @@
-//=require ./_partial.js
+//=require base.js

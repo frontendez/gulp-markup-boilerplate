@@ -1,4 +1,2 @@
-//import "@babel/polyfill";
-import {moduleFunction} from './_partial.esm.js';
-
-moduleFunction();
+//import '@babel/polyfill';
+import '~/base.esm.js';

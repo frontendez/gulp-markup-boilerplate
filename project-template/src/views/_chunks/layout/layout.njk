@@ -15,9 +15,9 @@
 
 <body class="layout">
 <div class="container">
-    {% include 'components/header/header.njk' %}
+    {% include 'header/header.njk' %}
     {% block page %}{% endblock %}
-    {% include 'components/footer/footer.njk' %}
+    {% include 'footer/footer.njk' %}
 </div>
 
 {%- include './_scripts.njk' %}

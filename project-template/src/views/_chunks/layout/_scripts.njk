@@ -1,0 +1,8 @@
+{% if not useBundle -%}
+    <script src="assets/libraries/jquery-3.5.1/jquery.min.js"></script>
+    <script src="assets/libraries/bootstrap-4.5.3/bootstrap.min.js"></script>
+    <script src="assets/scripts/main.esm.min.js"></script>
+    <script src="assets/scripts/main.min.js"></script>
+{%- else -%}
+    <script src="assets/scripts/bundle.min.js"></script>
+{%- endif %}
