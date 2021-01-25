@@ -35,29 +35,31 @@ It will create a project directory inside the current folder, generate the initi
 ## Project structure
 
 ```
-my-project                         #Project directory
-|-- dist                           #Output directory
-    |-- assets                     #Assets
-        |-- fonts                  #Fonts
-        |-- images                 #Images
-        |-- libraries              #Libraries
-        |-- scripts                #Scripts
-        |-- styles                 #Styles
-    |-- index.html                 #Index page
-|-- node_modules                   #Node modules
-|-- src                            #Source directory
-        |-- fonts                  #Fonts
-        |-- images                 #Images
-        |-- libraries              #Libraries
-        |-- scripts                #Scripts
-            |-- _chunks            #Chunks (partials)
-        |-- static                 #Static files
-        |-- styles                 #Styles
-            |-- _chunks            #Chunks (partials)
-        |-- views                  #Views
-            |-- _chunks            #Chunks (partials)
-|-- config.js                      #Project config
-|-- gulpfile.js                    #Gulp config
+my-project                  #Project directory
+|-- dist                    #Output directory
+    |-- assets              #Assets
+    |-- fonts               #Fonts
+    |-- images              #Images
+    |-- libraries           #Libraries
+    |-- scripts             #Scripts
+    |-- styles              #Styles
+    |-- index.html          #Index page
+|-- node_modules            #Node modules
+|-- src                     #Source directory
+    |-- assets              #Assets
+        |-- fonts           #Fonts
+        |-- images          #Images
+        |-- libraries       #Libraries
+        |-- scripts         #Scripts
+            |-- chunks      #Chunks (partials)
+        |-- static          #Static files
+        |-- styles          #Styles
+            |-- chunks      #Chunks (partials)
+        |-- views           #Views
+            |-- chunks      #Chunks (partials)
+    |-- index.njk      #Index page
+|-- config.js               #Project config
+|-- gulpfile.js             #Gulp config
 |-- package.json
 |-- package-lock.json
 ```

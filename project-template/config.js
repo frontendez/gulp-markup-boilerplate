@@ -9,7 +9,7 @@ const bundles = {
     styles: {
         src: [
             `${paths.dist}/assets/fonts/roboto/roboto.css`,
-            `${paths.dist}/assets/libraries/bootstrap-4.5.3/bootstrap.css`,
+            `${paths.dist}/assets/libraries/bootstrap-4.6.0/bootstrap.css`,
             `${paths.dist}/assets/styles/main.css`
         ],
         dest: `${paths.dist}/assets/styles`,
@@ -18,7 +18,7 @@ const bundles = {
     scripts: {
         src: [
             `${paths.dist}/assets/libraries/jquery-3.5.1/jquery.js`,
-            `${paths.dist}/assets/libraries/bootstrap-4.5.3/bootstrap.js`,
+            `${paths.dist}/assets/libraries/bootstrap-4.6.0/bootstrap.js`,
             `${paths.dist}/assets/scripts/main.esm.js`,
             `${paths.dist}/assets/scripts/main.js`
         ],
@@ -29,39 +29,39 @@ const bundles = {
 
 const build = {
     esModules: {
-        chunks: `${paths.src}/scripts/_chunks`,
-        src: [`${paths.src}/scripts/**/[^_]*.esm.js`, `!${paths.src}/scripts/_chunks/**/*.js`],
+        chunks: `${paths.src}/assets/scripts/chunks`,
+        src: [`${paths.src}/assets/scripts/**/[^_]*.esm.js`, `!${paths.src}/assets/scripts/chunks/**/*.js`],
         dest: `${paths.dist}/assets/scripts`
     },
     fonts: {
-        src: `${paths.src}/fonts/**/*.*`,
+        src: `${paths.src}/assets/fonts/[^_]*/**/*.*`,
         dest: `${paths.dist}/assets/fonts`
     },
     images: {
-        src: `${paths.src}/images/**/*.*`,
+        src: `${paths.src}/assets/images/**/*.*`,
         dest: `${paths.dist}/assets/images`
     },
     libraries: {
-        src: `${paths.src}/libraries/**/*.*`,
+        src: `${paths.src}/assets/libraries/[^_]*/**/*.*`,
         dest: `${paths.dist}/assets/libraries`
     },
     scripts: {
-        chunks: `${paths.src}/scripts/_chunks`,
-        src: [`${paths.src}/scripts/**/!(_*|*.esm).js`, `!${paths.src}/scripts/_chunks/**/*.js`],
+        chunks: `${paths.src}/assets/scripts/chunks`,
+        src: [`${paths.src}/assets/scripts/**/!(_*|*.esm).js`, `!${paths.src}/assets/scripts/chunks/**/*.js`],
         dest: `${paths.dist}/assets/scripts`
     },
     static: {
-        src: `${paths.src}/static/**/*.*`,
+        src: `${paths.src}/assets/static/**/*.*`,
         dest: paths.dist
     },
     styles: {
-        chunks: `${paths.src}/styles/_chunks`,
-        src: [`${paths.src}/styles/**/[^_]*.scss`, `!${paths.src}/styles/_chunks/**/*.scss`],
+        chunks: `${paths.src}/assets/styles/chunks`,
+        src: [`${paths.src}/assets/styles/**/[^_]*.scss`, `!${paths.src}/assets/styles/chunks/**/*.scss`],
         dest: `${paths.dist}/assets/styles`
     },
     views: {
-        chunks: `${paths.src}/views/_chunks`,
-        src: [`${paths.src}/views/**/[^_]*.njk`, `!${paths.src}/views/_chunks/**/*.njk`],
+        chunks: `${paths.src}/assets/views/chunks`,
+        src: [`${paths.src}/**/[^_]*.njk`, `!${paths.src}/assets/views/chunks/**/*.njk`],
         dest: paths.dist
     }
 };
@@ -70,28 +70,28 @@ const minify = {
     scripts: {
         src: [
             `${paths.dist}/assets/**/!(*.min).js`,
-            `!${paths.dist}/assets/@(fonts|libraries)/**/*.js`
+            //`!${paths.dist}/assets/@(fonts|libraries)/**/*.js`
         ],
         dest: 'dist/assets'
     },
     styles: {
         src: [
             `${paths.dist}/assets/**/!(*.min).css`,
-            `!${paths.dist}/assets/@(fonts|libraries)/**/*.css`
+            //`!${paths.dist}/assets/@(fonts|libraries)/**/*.css`
         ],
         dest: `${paths.dist}/assets`
     }
 };
 
 const watch = {
-    esModules: `${paths.src}/scripts/**/*.esm.js`,
-    fonts: `${paths.src}/fonts/**/*.*`,
-    images: `${paths.src}/images/**/*.*`,
-    libraries: `${paths.src}/libraries/**/*.*`,
-    scripts: `${paths.src}/scripts/**/!(*.esm).js`,
-    static: `${paths.src}/static/**/*.*`,
-    styles: `${paths.src}/styles/**/*.scss`,
-    views: `${paths.src}/views/**/*.njk`
+    esModules: `${paths.src}/assets/scripts/**/*.esm.js`,
+    fonts: `${paths.src}/assets/fonts/**/*.*`,
+    images: `${paths.src}/assets/images/**/*.*`,
+    libraries: `${paths.src}/assets/libraries/**/*.*`,
+    scripts: `${paths.src}/assets/scripts/**/!(*.esm).js`,
+    static: `${paths.src}/assets/static/**/*.*`,
+    styles: `${paths.src}/assets/styles/**/*.scss`,
+    views: `${paths.src}/**/*.njk`
 };
 
 module.exports = {

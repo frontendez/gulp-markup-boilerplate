@@ -10,7 +10,7 @@
     {% if description %}<meta name="description" content="{{ description }}">{% endif -%}
     {% if robots %}<meta name="robots" content="{{ robots }}">{% endif -%}
 
-    {% include './_styles.njk' %}
+    {% block styles %}{% include './_styles.njk' %}{% endblock %}
 </head>
 
 <body class="layout">
@@ -20,7 +20,7 @@
     {% include 'footer/footer.njk' %}
 </div>
 
-{%- include './_scripts.njk' %}
+{%- block scripts %}{% include './_scripts.njk' %}{% endblock %}
 </body>
 
 </html>
