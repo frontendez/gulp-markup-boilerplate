@@ -70,14 +70,14 @@ const minify = {
     scripts: {
         src: [
             `${paths.dist}/assets/**/!(*.min).js`,
-            //`!${paths.dist}/assets/@(fonts|libraries)/**/*.js`
+            `!${paths.dist}/assets/@(fonts|libraries)/**/*.js`
         ],
         dest: 'dist/assets'
     },
     styles: {
         src: [
             `${paths.dist}/assets/**/!(*.min).css`,
-            //`!${paths.dist}/assets/@(fonts|libraries)/**/*.css`
+            `!${paths.dist}/assets/@(fonts|libraries)/**/*.css`
         ],
         dest: `${paths.dist}/assets`
     }
