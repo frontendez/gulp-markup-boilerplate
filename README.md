@@ -46,18 +46,17 @@ my-project                  #Project directory
     |-- index.html          #Index page
 |-- node_modules            #Node modules
 |-- src                     #Source directory
-    |-- assets              #Assets
-        |-- fonts           #Fonts
-        |-- images          #Images
-        |-- libraries       #Libraries
-        |-- scripts         #Scripts
-            |-- chunks      #Chunks (partials)
-        |-- static          #Static files
-        |-- styles          #Styles
-            |-- chunks      #Chunks (partials)
-        |-- views           #Views
-            |-- chunks      #Chunks (partials)
-    |-- index.njk      #Index page
+    |-- fonts               #Fonts
+    |-- images              #Images
+    |-- libraries           #Libraries
+    |-- scripts             #Scripts
+        |-- __chunks        #Chunks (partials)
+    |-- static              #Static files
+    |-- styles              #Styles
+        |-- __chunks        #Chunks (partials)
+    |-- views               #Views
+        |-- __chunks        #Chunks (partials)
+        |-- index.njk       #Index page
 |-- config.js               #Project config
 |-- gulpfile.js             #Gulp config
 |-- package.json
