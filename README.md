@@ -38,11 +38,11 @@ It will create a project directory inside the current folder, generate the initi
 my-project                  #Project directory
 |-- dist                    #Output directory
     |-- assets              #Assets
-        |-- fonts               #Fonts
-        |-- images              #Images
-        |-- libraries           #Libraries
-        |-- scripts             #Scripts
-        |-- styles              #Styles
+        |-- fonts           #Fonts
+        |-- images          #Images
+        |-- libraries       #Libraries
+        |-- scripts         #Scripts
+        |-- styles          #Styles
     |-- index.html          #Index page
 |-- node_modules            #Node modules
 |-- src                     #Source directory
